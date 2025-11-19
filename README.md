@@ -6,12 +6,13 @@ Realme GT7 Pro (codenamed _"RMX5010"_) is a high-end smartphone from Realme.
 
 ```
 mkdir twrp && cd twrp
-repo init --depth=1 -u https://github.com/kmiit/platform_manifest_twrp_aosp
-repo sync
-git clone --depth=1 https://github.com/realme-rmx5010-development/android_device_realme_rmx5010-TWRP device/realme/rmx5010
+repo init --depth=1 -u https://github.com/TWRP-Test/platform_manifest_twrp_aosp -b twrp-14.1
+repo sync -j8
+git clone --depth=1 https://github.com/RealmeOS/twrp_device_oplus_sm87xx device/realme/rmx5010 -b twrp-14
 ```
 
 ```
+export ALLOW_MISSING_DEPENDENCIES=true
 source build/envsetup.sh
 lunch twrp_rmx5010-ap2a-eng
 make recoveryimage
@@ -24,9 +25,6 @@ Using Github Actions to build TWRP-14 branch may fail because of the large sourc
 
 
 ## Features
-Not works:
-- [ ] Touch in fastbootd
-
 Works:
 - [X] ADB
 - [X] Display
@@ -43,7 +41,4 @@ Works:
 
 ```
 fastboot flash recovery recovery.img
-or
-fastboot flash recovery_a recovery.img
-fastboot flash recovery_b recovery.img
 ```
